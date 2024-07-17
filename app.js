@@ -5,7 +5,11 @@ const app = express()
 //const app = require ('express')
 
 app.get("/", (req, res) => {
-    res.send("See you World!")
+
+    res.status(200).json({
+        "name": "Prashant Shakya",
+        "age": 21
+    })
 })
 
 
@@ -16,5 +20,5 @@ app.get("/", (req, res) => {
 
 
 app.listen(4000, () => {
-    console.log('Nodejs server has started at port 3000');
+    console.log('Nodejs server has started at port 4000');
 }) 
