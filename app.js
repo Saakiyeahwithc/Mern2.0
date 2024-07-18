@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
     })
 })
 
-
+const connectionString = "mongodb+srv://Saakiyeah:Saakiyeahdb@cluster0.1b4lbgx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
 
 
