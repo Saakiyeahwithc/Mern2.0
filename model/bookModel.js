@@ -3,10 +3,14 @@ const mongoose = require('mongoose')
 
 const bookSchema = new mongoose.Schema({
     bookName: {
-        type: String
+        type: String,
+        unique: true
     },
     bookPrice: {
         type: String
+    },
+    isbnNumber: {
+        type: Number
     },
     authorName: {
         type: String
@@ -14,10 +18,10 @@ const bookSchema = new mongoose.Schema({
     publishedAt: {
         type: String
     },
-    isbnNumber: {
-        type: Number
+    publication: {
+        type: String
     }
 })
 
 const Book = mongoose.model('Book', bookSchema)
-model.exports = Book
+module.exports = Book
