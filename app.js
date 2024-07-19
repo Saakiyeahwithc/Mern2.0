@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const mongoose = require('mongoose')
 
 //alternative
 //const app = require ('express')
@@ -14,8 +15,12 @@ app.get("/", (req, res) => {
 
 const connectionString = "mongodb+srv://Saakiyeah:Saakiyeahdb@cluster0.1b4lbgx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
+async function connectionToDatabase() {
+    await mongoose.connect(connectionString)
+    console.log('Connection to Database Successful')
+}
 
-
+connectionToDatabase()
 
 
 
