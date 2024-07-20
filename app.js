@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+exports.app = app
 const mongoose = require('mongoose')
 const Book = require('./model/bookmodel')
 
@@ -77,7 +78,30 @@ app.get("/book/:id", async (req, res) => {
     }
 })
 
+//delete operation
+app.delete("/book/:id", async (req, res) => {
+    const id = req.params.id
+    await Book.findByIdAndDelete(id)
+    res.status(200).json({
+        message: "Book deleted Successfully"
+    })
+})
 
+
+//update operation
+app.patch("/book/:id", async (req, res) => {
+    const id = req.params.id
+    const { bookName, bookPrice, authorName, isbnNumber, publishedAt, publication } = req.body
+    await Book.findByIdAndUpdate(id, {
+        bookName,
+        bookPrice,
+        isbnNumber,
+        authorName,
+        publishedAt,
+        publication
+    })
+
+})
 
 app.listen(4000, () => {
     console.log('Nodejs server has started at port 4000');
