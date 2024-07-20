@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
     })
 })
 
-//create book
+//creates tables required tables/feilds in the database
 
 app.post("/book", async (req, res) => {
 
@@ -45,7 +45,7 @@ app.post("/book", async (req, res) => {
     })
 })
 
-//all read
+//Gets information for all the books in the library
 app.get("/book", async (req, res) => {
     const books = await Book.find()
     res.status(200).json({
@@ -54,7 +54,7 @@ app.get("/book", async (req, res) => {
     })
 })
 
-//single read
+//Fetches single book in the library
 app.get("/book/:id", async (req, res) => {
     try {
         const id = req.params.id
@@ -78,7 +78,7 @@ app.get("/book/:id", async (req, res) => {
     }
 })
 
-//delete operation
+//delete operation in the library
 app.delete("/book/:id", async (req, res) => {
     const id = req.params.id
     await Book.findByIdAndDelete(id)
@@ -88,7 +88,7 @@ app.delete("/book/:id", async (req, res) => {
 })
 
 
-//update operation
+//update operation in the library
 app.patch("/book/:id", async (req, res) => {
     const id = req.params.id
     const { bookName, bookPrice, authorName, isbnNumber, publishedAt, publication } = req.body
@@ -99,6 +99,9 @@ app.patch("/book/:id", async (req, res) => {
         authorName,
         publishedAt,
         publication
+    })
+    res.status(201).json({
+        message: "Books Updated Successfully"
     })
 
 })
